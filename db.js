@@ -1,4 +1,4 @@
-import { Sequelize, DataTypes } from "sequelize";
+import { Sequelize } from "sequelize";
 
 export const database = new Sequelize("servicios", "root", "995410", {
   host: "localhost",

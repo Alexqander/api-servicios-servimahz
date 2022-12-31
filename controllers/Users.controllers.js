@@ -15,7 +15,7 @@ export const getUser = async (req, res, next) => {
     if (user === null) {
       console.log("No se encontraron usuarios");
     } else {
-      res.json(user);
+      res.status(200).json({ data: user });
     }
   } catch (error) {
     return res.status(500).json({ message: err.message });

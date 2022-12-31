@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import { database } from "../db.js";
 import { Servicios } from "./Servicios.js";
 
-const Electrodomestico = database.define("Electrodomestico", {
+export const Electrodomestico = database.define("Electrodomestico", {
   id: {
     type: DataTypes.INTEGER,
     allowNull: true,

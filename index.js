@@ -2,6 +2,8 @@ import { app } from "./app.js";
 import { database } from "./db.js";
 import { PORT } from "./config.js";
 
+import "./models/Estado.js";
+
 async function main() {
   try {
     await database.sync({ force: false });

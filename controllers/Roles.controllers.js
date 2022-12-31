@@ -11,3 +11,12 @@ export const createRole = async (req, res) => {
     return res.status(404).json({ message: error.message });
   }
 };
+
+export const getRoles = async (req, res) => {
+  try {
+    const roles = await Roles.findAll();
+    res.json(roles);
+  } catch (error) {
+    return res.status(404).json({ message: error.message });
+  }
+};

@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import { database } from "../db.js";
 import { Servicios } from "./Servicios.js";
-const Cliente = database.define("Cliente", {
+export const Cliente = database.define("Cliente", {
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -12,7 +12,7 @@ const Cliente = database.define("Cliente", {
     type: DataTypes.STRING(255),
     allowNull: false,
   },
-  telefon: {
+  telefono: {
     type: DataTypes.STRING(255),
     allowNull: false,
   },

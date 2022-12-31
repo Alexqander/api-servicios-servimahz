@@ -11,14 +11,14 @@ export const Servicios = database.define("Servicios", {
     type: DataTypes.STRING(300),
     allowNull: false,
   },
-  fehca_registro: {
+  fecha_registro: {
     type: DataTypes.DATE(),
   },
-  estado_servicio: {
+  tipo_servicio: {
     type: DataTypes.STRING(200),
     allowNull: false,
   },
-  descripcio: {
+  descripcion: {
     type: DataTypes.TEXT(),
     allowNull: false,
   },
