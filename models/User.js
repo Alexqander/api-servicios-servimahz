@@ -1,13 +1,12 @@
 import { DataTypes } from "sequelize";
 import { database } from "../db.js";
 import { Roles } from "./Roles.js";
-import { Servicios } from "./Servicios.js";
+import { Servicio } from "./Servicio.js";
 export const User = database.define("User", {
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
-    autoIncrement: true,
   },
   name: {
     type: DataTypes.STRING(255),
@@ -17,6 +16,9 @@ export const User = database.define("User", {
     type: DataTypes.STRING(255),
     allowNull: false,
   },
+  password: {
+    type: DataTypes.STRING(255),
+  },
   telephone: {
     type: DataTypes.STRING(255),
     allowNull: false,
@@ -24,11 +26,11 @@ export const User = database.define("User", {
 });
 User.belongsToMany(Roles, { through: "UserRoles" });
 Roles.belongsToMany(User, { through: "UserRoles" });
-User.hasMany(Servicios, {
+User.hasMany(Servicio, {
   foreignKey: "tecnico_id",
   sourceKey: "id",
 });
-Servicios.belongsTo(User, {
+Servicio.belongsTo(User, {
   foreignKey: "tecnico_id",
   targetId: "id",
 });

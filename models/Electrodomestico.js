@@ -1,24 +1,43 @@
 import { DataTypes } from "sequelize";
 import { database } from "../db.js";
-import { Servicios } from "./Servicios.js";
+import { Producto } from "./Producto.js";
+import { Servicio } from "./Servicio.js";
 
-export const Electrodomestico = database.define("Electrodomestico", {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    primaryKey: true,
-    autoIncrement: true,
+export const Electrodomestico = database.define(
+  "Electrodomestico",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    uid: {
+      type: DataTypes.STRING(255),
+      unique: true,
+      allowNull: true,
+    },
+    tipo: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    falla: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
   },
-  tipo: {
-    type: DataTypes.STRING(255),
-    allowNull: false,
-  },
-  marca: {
-    type: DataTypes.STRING(255),
-  },
-  falla: {
-    type: DataTypes.STRING(255),
-  },
+  {
+    timestamps: false,
+  }
+);
+Electrodomestico.hasOne(Servicio);
+Servicio.belongsTo(Electrodomestico);
+
+Electrodomestico.hasMany(Producto, {
+  foreignKey: "electrodomesticoId",
+  sourceKey: "id",
 });
-Electrodomestico.hasOne(Servicios);
-Servicios.belongsTo(Electrodomestico);
+Producto.belongsTo(Electrodomestico, {
+  foreignKey: "electrodomesticoId",
+  targetId: "id",
+});

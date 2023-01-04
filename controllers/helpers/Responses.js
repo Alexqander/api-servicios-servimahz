@@ -9,6 +9,9 @@ export function getResponse201(res, resource, operation) {
     data: resource,
   });
 }
+export function getResponse400(res) {
+  return res.status(400).json({ message: "Bad Request" });
+}
 export function getResponse401(res) {
   return res.status(401).json({ message: "Unauthorized" });
 }

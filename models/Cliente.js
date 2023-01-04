@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { database } from "../db.js";
-import { Servicios } from "./Servicios.js";
+import { Servicio } from "./Servicio.js";
 export const Cliente = database.define("Cliente", {
   id: {
     type: DataTypes.INTEGER,
@@ -17,11 +17,11 @@ export const Cliente = database.define("Cliente", {
     allowNull: false,
   },
 });
-Cliente.hasMany(Servicios, {
+Cliente.hasMany(Servicio, {
   foreignKey: "clienteId",
   sourceKey: "id",
 });
-Servicios.belongsTo(Cliente, {
+Servicio.belongsTo(Cliente, {
   foreignKey: "clienteId",
   targetId: "id",
 });

@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { database } from "../db.js";
-import { Servicios } from "./Servicios.js";
+import { Servicio } from "./Servicio.js";
 
 export const Estado = database.define(
   "Estado",
@@ -20,11 +20,11 @@ export const Estado = database.define(
     timestamps: false,
   }
 );
-Estado.hasMany(Servicios, {
+Estado.hasMany(Servicio, {
   foreignKey: "estadoId",
   sourceKey: "id",
 });
-Servicios.belongsTo(Estado, {
+Servicio.belongsTo(Estado, {
   foreignKey: "estadoId",
   targetId: "id",
 });

@@ -1,15 +1,10 @@
 import { DataTypes } from "sequelize";
 import { database } from "../db.js";
-export const Servicios = database.define("Servicios", {
+export const Servicio = database.define("Servicio", {
   id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING(350),
     allowNull: true,
-    autoIncrement: true,
     primaryKey: true,
-  },
-  direccion: {
-    type: DataTypes.STRING(300),
-    allowNull: false,
   },
   fecha_registro: {
     type: DataTypes.DATE(),
